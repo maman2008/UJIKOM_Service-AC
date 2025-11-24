@@ -48,8 +48,18 @@ if (bookingForm) {
         const address = document.getElementById('address').value;
         const notes = document.getElementById('notes').value;
         
-        // Create WhatsApp message
-        const message = `Halo AC Jaya, saya ingin booking layanan service AC. Berikut detail kebutuhan saya:%0A%0A- Nama: ${name}%0A- No. WhatsApp: ${phone}%0A- Jenis Layanan: ${service}%0A- Tanggal: ${date}%0A- Alamat: ${address}%0A- Catatan: ${notes || 'Tidak ada'}%0A%0ATerima kasih.`;
+        // Get current time for greeting
+        const now = new Date();
+        const hours = now.getHours();
+        let greeting = 'Selamat ';
+        
+        if (hours >= 3 && hours < 10) greeting += 'Pagi';
+        else if (hours >= 10 && hours < 15) greeting += 'Siang';
+        else if (hours >= 15 && hours < 19) greeting += 'Sore';
+        else greeting += 'Malam';
+        
+        // Create WhatsApp message with proper formatting
+        const message = `${greeting} Bapak/Ibu AC Jaya,%0A%0ASaya ingin memesan layanan service AC dengan detail sebagai berikut:%0A%0A• Nama: ${name}%0A• No. WhatsApp: ${phone}%0A• Jenis Layanan: ${service}%0A• Tanggal: ${date}%0A• Alamat: ${address}%0A• Catatan: ${notes || 'Tidak ada'}%0A%0ATerima kasih atas pelayanannya. Saya tunggu konfirmasinya.%0A%0ASalam,%0A${name}`;
         
         const whatsappUrl = `https://wa.me/6285960035570?text=${message}`;
         
@@ -138,3 +148,4 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
