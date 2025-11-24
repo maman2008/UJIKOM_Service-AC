@@ -34,28 +34,33 @@ backToTopBtn.addEventListener('click', () => {
     });
 });
 
-// Form submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+// Booking form submission
+const bookingForm = document.getElementById('bookingForm');
+if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form values
         const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
+        const service = document.getElementById('service').value;
+        const date = document.getElementById('date').value;
+        const address = document.getElementById('address').value;
+        const notes = document.getElementById('notes').value;
         
-        // Here you would typically send this data to a server
-        console.log('Form submitted:', { name, email, phone, message });
+        // Create WhatsApp message
+        const message = `Halo AC Jaya, saya ingin booking layanan service AC. Berikut detail kebutuhan saya:%0A%0A- Nama: ${name}%0A- No. WhatsApp: ${phone}%0A- Jenis Layanan: ${service}%0A- Tanggal: ${date}%0A- Alamat: ${address}%0A- Catatan: ${notes || 'Tidak ada'}%0A%0ATerima kasih.`;
         
-        // Show success message
-        alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+        const whatsappUrl = `https://wa.me/6285960035570?text=${message}`;
         
-        // Reset form
-        contactForm.reset();
+        // Open WhatsApp
+        window.open(whatsappUrl, '_blank');
     });
 }
+
+// Set minimum date for booking to today
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('date').setAttribute('min', today);
 
 // Add animation on scroll
 function animateOnScroll() {
@@ -93,28 +98,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
-// Add loading state to form submit button
-if (contactForm) {
-    contactForm.addEventListener('submit', function() {
-        const submitBtn = this.querySelector('button[type="submit"]');
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="loading"></span> Mengirim...';
-            
-            // Reset button state after 3 seconds (simulating form submission)
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Pesan Terkirim!';
-                
-                // Reset button text after 2 more seconds
-                setTimeout(() => {
-                    submitBtn.textContent = 'Kirim Pesan';
-                }, 2000);
-            }, 3000);
-        }
-    });
-}
 
 // Initialize AOS (Animate On Scroll) for elements
 function initAOS() {
