@@ -6,45 +6,194 @@
     <title>AC Jaya Service - Layanan Profesional Service AC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .service-card, .testimonial-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before, .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .service-card:hover::before, .testimonial-card:hover::before {
+            left: 100%;
+        }
+        
+        .service-card:hover, .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px) rotate(0deg); }
+            50% { transform: translate(0, -15px) rotate(1deg); }
+            100% { transform: translate(0, 0px) rotate(0deg); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Form styling */
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            background-color: #f8fafc !important;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .hero-bg {
+                text-align: center;
+            }
+            
+            .service-card, .testimonial-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
+    <nav class="nav-glass shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <i class="fas fa-snowflake text-blue-600 text-2xl mr-2"></i>
                     <span class="font-bold text-xl text-gray-800">AC Jaya Service</span>
                 </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Beranda</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition">Layanan</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition">Tentang Kami</a>
-                    <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Testimoni</a>
-                    <a href="#booking" class="text-gray-700 hover:text-blue-600 transition">Booking</a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">Beranda</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">Layanan</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">Tentang Kami</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">Testimoni</a>
+                    <a href="#booking" class="text-gray-700 hover:text-blue-600 transition-all duration-300 font-medium">Booking</a>
                     <a href="https://wa.me/6285960035570?text=Halo%20AC%20Jaya%2C%20saya%20ingin%20booking%20layanan%20service%20AC.%20Berikut%20detail%20kebutuhan%20saya%3A%0A%0A- Jenis%20Layanan%3A%20%0A- Alamat%3A%20%0A- Hari%20%26%20Waktu%20yang%20Diharapkan%3A%20%0A%0ATerima%20kasih."
                        target="_blank"
-                       class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center">
+                       class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center shadow-lg">
                         <i class="fab fa-whatsapp mr-2"></i> Booking Sekarang
                     </a>
                 </div>
-                <div class="md:hidden">
+                <div class="lg:hidden">
                     <button id="menu-btn" class="text-gray-700 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
             <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="#home" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Beranda</a>
-                <a href="#services" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Layanan</a>
-                <a href="#about" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Tentang Kami</a>
-                <a href="#testimonials" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Testimoni</a>
-                <a href="#booking" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Booking</a>
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4">
+                <a href="#home" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-all duration-300">Beranda</a>
+                <a href="#services" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-all duration-300">Layanan</a>
+                <a href="#about" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-all duration-300">Tentang Kami</a>
+                <a href="#testimonials" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-all duration-300">Testimoni</a>
+                <a href="#booking" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-all duration-300">Booking</a>
                 <a href="https://wa.me/6285960035570?text=Halo%20AC%20Jaya%2C%20saya%20ingin%20booking%20layanan%20service%20AC.%20Berikut%20detail%20kebutuhan%20saya%3A%0A%0A- Jenis%20Layanan%3A%20%0A- Alamat%3A%20%0A- Hari%20%26%20Waktu%20yang%20Diharapkan%3A%20%0A%0ATerima%20kasih."
                    target="_blank"
-                   class="block mt-4 bg-green-500 hover:bg-green-600 text-white text-center py-2 px-4 rounded-full font-medium transition-all duration-300">
+                   class="block mt-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-center py-3 px-4 rounded-full font-medium transition-all duration-300 shadow-lg">
                     <i class="fab fa-whatsapp mr-2"></i> Booking via WhatsApp
                 </a>
             </div>
@@ -52,28 +201,53 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white py-20">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Layanan Service AC Profesional & Terpercaya</h1>
-                    <p class="text-xl mb-8 text-blue-100">Dinginkan ruangan Anda dengan layanan terbaik dari tim ahli kami yang berpengalaman lebih dari 10 tahun.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#booking" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-50 transition duration-300 text-center">Booking Sekarang</a>
-                        <a href="#services" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300 text-center">Lihat Layanan</a>
+    <section id="home" class="hero-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Layanan Service AC 
+                        <span class="block bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">Profesional & Terpercaya</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-2xl">
+                        Dinginkan ruangan Anda dengan layanan terbaik dari tim ahli kami yang berpengalaman lebih dari 10 tahun.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
+                        <a href="#booking" class="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg text-center">
+                            <i class="fas fa-calendar-check mr-2"></i>Booking Sekarang
+                        </a>
+                        <a href="#services" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 text-center">
+                            <i class="fas fa-info-circle mr-2"></i>Lihat Layanan
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12 max-w-md mx-auto lg:mx-0">
+                        <div class="stats-card p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold text-blue-600">5000+</div>
+                            <div class="text-sm text-gray-600">Pelanggan Puas</div>
+                        </div>
+                        <div class="stats-card p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold text-blue-600">10+</div>
+                            <div class="text-sm text-gray-600">Tahun Pengalaman</div>
+                        </div>
+                        <div class="stats-card p-4 rounded-xl text-center">
+                            <div class="text-2xl font-bold text-blue-600">24/7</div>
+                            <div class="text-sm text-gray-600">Layanan Darurat</div>
+                        </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
+                <div class="lg:w-1/2 flex justify-center">
                     <div class="relative">
-                        <img src="image/image.png" alt="AC Technician" class="rounded-lg shadow-2xl floating">
-                        <div class="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-xl p-4">
+                        <img src="image/image.png" alt="AC Technician" class="rounded-2xl shadow-2xl floating max-w-full h-auto">
+                        <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-xl shadow-xl">
                             <div class="flex items-center">
-                                <div class="bg-blue-100 p-3 rounded-full mr-3">
-                                    <i class="fas fa-users text-blue-600 text-xl"></i>
+                                <div class="bg-white p-2 rounded-full mr-3">
+                                    <i class="fas fa-bolt text-blue-600 text-xl"></i>
                                 </div>
                                 <div>
-                                    <p class="font-bold text-gray-800">5000+</p>
-                                    <p class="text-sm text-gray-600">Pelanggan Puas</p>
+                                    <p class="font-bold">Service 24 Jam</p>
+                                    <p class="text-sm text-blue-100">Siap Melayani</p>
                                 </div>
                             </div>
                         </div>
@@ -85,81 +259,104 @@
 
     <!-- Services Section -->
     <section id="services" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Layanan Profesional Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai layanan perawatan dan perbaikan AC untuk kebutuhan rumah dan bisnis Anda.</p>
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">Layanan Profesional Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    Kami menyediakan berbagai layanan perawatan dan perbaikan AC untuk kebutuhan rumah dan bisnis Anda.
+                </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-on-scroll">
-                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                        <i class="fas fa-home text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg border border-gray-100 animate-on-scroll">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-5 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-home text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Service AC Rumah</h3>
-                    <p class="text-gray-600 mb-4">Layanan perbaikan dan perawatan AC rumah dengan teknisi berpengalaman untuk kenyamanan keluarga Anda.</p>
-                    <a href="#booking" class="text-blue-600 font-medium flex items-center">
-                        Pesan Sekarang <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Service AC Rumah</h3>
+                    <p class="text-gray-600 mb-6 text-center leading-relaxed">
+                        Layanan perbaikan dan perawatan AC rumah dengan teknisi berpengalaman untuk kenyamanan keluarga Anda.
+                    </p>
+                    <div class="text-center">
+                        <a href="#booking" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-all duration-300">
+                            Pesan Sekarang <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <!-- Service 2 -->
-                <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-on-scroll">
-                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                        <i class="fas fa-building text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg border border-gray-100 animate-on-scroll">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-5 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-building text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Service AC Kantor</h3>
-                    <p class="text-gray-600 mb-4">Layanan komprehensif untuk AC kantor dan gedung perkantoran dengan jadwal yang fleksibel.</p>
-                    <a href="#booking" class="text-blue-600 font-medium flex items-center">
-                        Pesan Sekarang <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Service AC Kantor</h3>
+                    <p class="text-gray-600 mb-6 text-center leading-relaxed">
+                        Layanan komprehensif untuk AC kantor dan gedung perkantoran dengan jadwal yang fleksibel.
+                    </p>
+                    <div class="text-center">
+                        <a href="#booking" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-all duration-300">
+                            Pesan Sekarang <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
                 </div>
+                
                 <!-- Service 3 -->
-                <div class="service-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-on-scroll">
-                    <div class="bg-blue-100 text-blue-600 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                        <i class="fas fa-wind text-2xl"></i>
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg border border-gray-100 animate-on-scroll">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white p-5 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-wind text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Cuci AC Berkala</h3>
-                    <p class="text-gray-600 mb-4">Jasa cuci AC berkualitas untuk kinerja optimal dan udara yang lebih bersih di ruangan Anda.</p>
-                    <a href="#booking" class="text-blue-600 font-medium flex items-center">
-                        Pesan Sekarang <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold mb-4 text-center text-gray-800">Cuci AC Berkala</h3>
+                    <p class="text-gray-600 mb-6 text-center leading-relaxed">
+                        Jasa cuci AC berkualitas untuk kinerja optimal dan udara yang lebih bersih di ruangan Anda.
+                    </p>
+                    <div class="text-center">
+                        <a href="#booking" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700 transition-all duration-300">
+                            Pesan Sekarang <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <img src="image/image copy.png" alt="Tentang Kami" class="rounded-lg shadow-xl w-full animate-on-scroll">
+    <section id="about" class="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <img src="image/image copy.png" alt="Tentang Kami" class="rounded-2xl shadow-2xl w-full animate-on-scroll">
                 </div>
-                <div class="md:w-1/2 md:pl-12">
-                    <h2 class="text-3xl font-bold mb-6">Mengapa Memilih AC Jaya Service?</h2>
-                    <p class="text-gray-700 mb-4">AC Jaya Service adalah penyedia jasa service AC profesional yang telah berpengalaman melayani pelanggan selama lebih dari 10 tahun dengan komitmen memberikan layanan terbaik.</p>
-                    <p class="text-gray-700 mb-6">Kami memiliki tim teknisi yang handal dan terlatih, siap memberikan pelayanan terbaik untuk kebutuhan pendingin ruangan Anda dengan garansi yang terjamin.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
-                            <span class="text-gray-700">Teknisi Berpengalaman & Bersertifikat</span>
+                <div class="lg:w-1/2 lg:pl-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 gradient-text">Mengapa Memilih AC Jaya Service?</h2>
+                    <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                        AC Jaya Service adalah penyedia jasa service AC profesional yang telah berpengalaman melayani pelanggan selama lebih dari 10 tahun dengan komitmen memberikan layanan terbaik.
+                    </p>
+                    <p class="text-gray-700 mb-8 text-lg leading-relaxed">
+                        Kami memiliki tim teknisi yang handal dan terlatih, siap memberikan pelayanan terbaik untuk kebutuhan pendingin ruangan Anda dengan garansi yang terjamin.
+                    </p>
+                    <div class="space-y-5 mb-8">
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fas fa-check-circle text-green-500 text-2xl mr-4"></i>
+                            <span class="text-gray-700 font-medium">Teknisi Berpengalaman & Bersertifikat</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
-                            <span class="text-gray-700">Garansi Layanan 30 Hari</span>
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fas fa-check-circle text-green-500 text-2xl mr-4"></i>
+                            <span class="text-gray-700 font-medium">Garansi Layanan 30 Hari</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
-                            <span class="text-gray-700">Harga Terjangkau & Transparan</span>
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fas fa-check-circle text-green-500 text-2xl mr-4"></i>
+                            <span class="text-gray-700 font-medium">Harga Terjangkau & Transparan</span>
                         </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
-                            <span class="text-gray-700">Pelayanan Cepat & Responsif</span>
+                        <div class="flex items-center bg-white p-4 rounded-xl shadow-sm">
+                            <i class="fas fa-check-circle text-green-500 text-2xl mr-4"></i>
+                            <span class="text-gray-700 font-medium">Pelayanan Cepat & Responsif</span>
                         </div>
                     </div>
-                    <div class="mt-8">
-                        <a href="#booking" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#booking" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg text-center">
                             Hubungi Kami <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="tel:+6285960035570" class="bg-white border-2 border-blue-500 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 text-center">
+                            <i class="fas fa-phone mr-2"></i>Telepon Sekarang
                         </a>
                     </div>
                 </div>
@@ -169,73 +366,86 @@
 
     <!-- Testimonials -->
     <section id="testimonials" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-4">Apa Kata Pelanggan Kami</h2>
-            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Kepuasan pelanggan adalah prioritas utama kami. Berikut beberapa testimoni dari pelanggan yang telah menggunakan layanan AC Jaya Service.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="container mx-auto px-4 sm:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 gradient-text">Apa Kata Pelanggan Kami</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto text-lg">
+                Kepuasan pelanggan adalah prioritas utama kami. Berikut beberapa testimoni dari pelanggan yang telah menggunakan layanan AC Jaya Service.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-on-scroll">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl">
+                <div class="testimonial-card bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100 animate-on-scroll">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 text-xl mr-2">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
+                        <span class="text-sm text-gray-500">5.0</span>
                     </div>
-                    <p class="text-gray-700 mb-4">"Pelayanan sangat memuaskan, AC saya dingin kembali seperti baru. Teknisi ramah dan profesional. Harga juga terjangkau!"</p>
+                    <p class="text-gray-700 mb-6 leading-relaxed italic">
+                        "Pelayanan sangat memuaskan, AC saya dingin kembali seperti baru. Teknisi ramah dan profesional. Harga juga terjangkau!"
+                    </p>
                     <div class="flex items-center">
-                        <div class="bg-blue-500 text-white rounded-full h-12 w-12 flex items-center justify-center mr-3">
+                        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full h-14 w-14 flex items-center justify-center mr-4 shadow-lg">
                             <span class="font-semibold">AS</span>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Andi Santoso</h4>
-                            <p class="text-sm text-gray-600">Jakarta Selatan</p>
+                            <h4 class="font-bold text-gray-800">Andi Santoso</h4>
+                            <p class="text-sm text-gray-600">metland transyogi cileungsi</p>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-on-scroll">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl">
+                <div class="testimonial-card bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100 animate-on-scroll">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 text-xl mr-2">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
+                        <span class="text-sm text-gray-500">5.0</span>
                     </div>
-                    <p class="text-gray-700 mb-4">"Harga bersaing dan pelayanan cepat. Teknisi datang tepat waktu dan pekerjaan rapi. Sudah 3 kali menggunakan jasa mereka."</p>
+                    <p class="text-gray-700 mb-6 leading-relaxed italic">
+                        "Harga bersaing dan pelayanan cepat. Teknisi datang tepat waktu dan pekerjaan rapi. Sudah 3 kali menggunakan jasa mereka."
+                    </p>
                     <div class="flex items-center">
-                        <div class="bg-blue-500 text-white rounded-full h-12 w-12 flex items-center justify-center mr-3">
+                        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full h-14 w-14 flex items-center justify-center mr-4 shadow-lg">
                             <span class="font-semibold">SD</span>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Siti Dewi</h4>
-                            <p class="text-sm text-gray-600">Tangerang</p>
+                            <h4 class="font-bold text-gray-800">Siti Dewi</h4>
+                            <p class="text-sm text-gray-600">perumahan duta permai cileungsi</p>
                         </div>
                     </div>
                 </div>
+                
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-on-scroll">
-                    <div class="flex items-center mb-4">
-                        <div class="text-yellow-400 text-xl">
+                <div class="testimonial-card bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100 animate-on-scroll">
+                    <div class="flex items-center mb-6">
+                        <div class="text-yellow-400 text-xl mr-2">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                         </div>
+                        <span class="text-sm text-gray-500">4.5</span>
                     </div>
-                    <p class="text-gray-700 mb-4">"Sudah beberapa kali menggunakan jasa AC Jaya, selalu puas dengan hasilnya. Recommended untuk service AC berkala!"</p>
+                    <p class="text-gray-700 mb-6 leading-relaxed italic">
+                        "Sudah beberapa kali menggunakan jasa AC Jaya, selalu puas dengan hasilnya. Recommended untuk service AC berkala!"
+                    </p>
                     <div class="flex items-center">
-                        <div class="bg-blue-500 text-white rounded-full h-12 w-12 flex items-center justify-center mr-3">
+                        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-full h-14 w-14 flex items-center justify-center mr-4 shadow-lg">
                             <span class="font-semibold">RB</span>
                         </div>
                         <div>
-                            <h4 class="font-semibold">Rudi Budiman</h4>
-                            <p class="text-sm text-gray-600">Depok</p>
+                            <h4 class="font-bold text-gray-800">Rudi Budiman</h4>
+                            <p class="text-sm text-gray-600">perumahan cileungsi hijau</p>
                         </div>
                     </div>
                 </div>
@@ -244,160 +454,153 @@
     </section>
 
     <!-- Booking Section -->
-    <section id="booking" class="py-16 bg-gradient-to-r from-blue-700 to-blue-500 text-white">
-        <div class="container mx-auto px-6">
+    <section id="booking" class="py-16 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">Booking Layanan Sekarang</h2>
-                <p class="text-xl text-blue-100 max-w-2xl mx-auto">Pesan layanan AC profesional Anda sekarang dan dapatkan penawaran spesial untuk pelanggan baru!</p>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Booking Layanan Sekarang</h2>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                    Pesan layanan AC profesional Anda sekarang dan dapatkan penawaran spesial untuk pelanggan baru!
+                </p>
             </div>
             
-            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
                 <div class="md:flex">
-                   <!-- Booking Form -->
-<div class="md:w-2/3 p-8">
-    <h3 class="text-2xl font-bold text-gray-800 mb-6">Booking Layanan AC</h3>
-    <form id="bookingForm" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="form-group">
-                <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="name">
-                    <i class="fas fa-user mr-2 text-blue-500"></i>Nama Lengkap
-                </label>
-                <input type="text" id="name" 
-                       class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400"
-                       placeholder="Masukkan nama lengkap" required>
-            </div>
-            <div class="form-group">
-                <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="phone">
-                    <i class="fas fa-phone mr-2 text-blue-500"></i>Nomor WhatsApp
-                </label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <span class="text-gray-500 font-medium">+62</span>
+                    <!-- Booking Form -->
+                    <div class="md:w-2/3 p-8 md:p-10">
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Booking Layanan AC</h3>
+                        <form id="bookingForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="form-group">
+                                    <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="name">
+                                        <i class="fas fa-user mr-2 text-blue-500"></i>Nama Lengkap
+                                    </label>
+                                    <input type="text" id="name" 
+                                           class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400"
+                                           placeholder="Masukkan nama lengkap" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="phone">
+                                        <i class="fas fa-phone mr-2 text-blue-500"></i>Nomor WhatsApp
+                                    </label>
+                                    <div class="relative">
+                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-gray-500 font-medium">+62</span>
+                                        </div>
+                                        <input type="tel" id="phone" 
+                                               class="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400"
+                                               placeholder="812-3456-7890" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="form-group">
+                                    <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="service">
+                                        <i class="fas fa-tools mr-2 text-blue-500"></i>Jenis Layanan
+                                    </label>
+                                    <div class="relative">
+                                        <select id="service" 
+                                                class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 appearance-none cursor-pointer">
+                                            <option value="" disabled selected class="text-gray-400">Pilih jenis layanan</option>
+                                            <option value="Service AC Rumah" class="text-gray-800">Service AC Rumah</option>
+                                            <option value="Service AC Kantor" class="text-gray-800">Service AC Kantor</option>
+                                            <option value="Cuci AC" class="text-gray-800">Cuci AC</option>
+                                            <option value="Pemasangan AC Baru" class="text-gray-800">Pemasangan AC Baru</option>
+                                            <option value="Lainnya" class="text-gray-800">Lainnya</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                            <i class="fas fa-chevron-down text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="date">
+                                        <i class="fas fa-calendar mr-2 text-blue-500"></i>Tanggal Pemesanan
+                                    </label>
+                                    <div class="relative">
+                                        <input type="date" id="date" 
+                                               class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 cursor-pointer">
+                                        <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                            <i class="fas fa-calendar-day text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="address">
+                                    <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>Alamat Lengkap
+                                </label>
+                                <textarea id="address" rows="3" 
+                                          class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400 resize-none"
+                                          placeholder="Contoh: Jl. Contoh No. 123, RT/RW 001/002, Kelurahan Contoh, Kecamatan Contoh, Kota Contoh - Kode Pos 12345" 
+                                          required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="notes">
+                                    <i class="fas fa-sticky-note mr-2 text-blue-500"></i>Catatan Tambahan
+                                    <span class="text-gray-400 font-normal normal-case ml-1">(Opsional)</span>
+                                </label>
+                                <textarea id="notes" rows="3" 
+                                          class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400 resize-none"
+                                          placeholder="Contoh: AC tidak dingin, AC berbunyi berisik, AC mengeluarkan bau tidak sedap, dll."></textarea>
+                            </div>
+                            
+                            
+                            <button type="submit" 
+                                    class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-5 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-xl hover:shadow-2xl flex items-center justify-center group">
+                                <i class="fab fa-whatsapp text-2xl mr-4 group-hover:scale-110 transition-transform duration-300"></i>
+                                <span class="text-xl">Booking via WhatsApp Sekarang</span>
+                                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+                            </button>
+                            
+                            <div class="text-center pt-4">
+                                <p class="text-gray-500 text-sm flex items-center justify-center">
+                                    <i class="fas fa-shield-alt mr-3 text-green-500 text-lg"></i>
+                                    Data Anda aman dan tidak akan disalahgunakan
+                                </p>
+                            </div>
+                        </form>
                     </div>
-                    <input type="tel" id="phone" 
-                           class="w-full pl-12 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400"
-                           placeholder="812-3456-7890" required>
-                </div>
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="form-group">
-                <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="service">
-                    <i class="fas fa-tools mr-2 text-blue-500"></i>Jenis Layanan
-                </label>
-                <div class="relative">
-                    <select id="service" 
-                            class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 appearance-none cursor-pointer">
-                        <option value="" disabled selected class="text-gray-400">Pilih jenis layanan</option>
-                        <option value="Service AC Rumah" class="text-gray-800">Service AC Rumah</option>
-                        <option value="Service AC Kantor" class="text-gray-800">Service AC Kantor</option>
-                        <option value="Cuci AC" class="text-gray-800">Cuci AC</option>
-                        <option value="Pemasangan AC Baru" class="text-gray-800">Pemasangan AC Baru</option>
-                        <option value="Lainnya" class="text-gray-800">Lainnya</option>
-                    </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                        <i class="fas fa-chevron-down text-gray-400"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="date">
-                    <i class="fas fa-calendar mr-2 text-blue-500"></i>Tanggal Pemesanan
-                </label>
-                <div class="relative">
-                    <input type="date" id="date" 
-                           class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 cursor-pointer">
-                    <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                        <i class="fas fa-calendar-day text-gray-400"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="address">
-                <i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>Alamat Lengkap
-            </label>
-            <textarea id="address" rows="3" 
-                      class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400 resize-none"
-                      placeholder="Contoh: Jl. Contoh No. 123, RT/RW 001/002, Kelurahan Contoh, Kecamatan Contoh, Kota Contoh - Kode Pos 12345" 
-                      required></textarea>
-        </div>
-        
-        <div class="form-group">
-            <label class="block text-gray-700 font-semibold mb-3 text-sm uppercase tracking-wide" for="notes">
-                <i class="fas fa-sticky-note mr-2 text-blue-500"></i>Catatan Tambahan
-                <span class="text-gray-400 font-normal normal-case ml-1">(Opsional)</span>
-            </label>
-            <textarea id="notes" rows="3" 
-                      class="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 bg-white text-gray-800 placeholder-gray-400 resize-none"
-                      placeholder="Contoh: AC tidak dingin, AC berbunyi berisik, AC mengeluarkan bau tidak sedap, dll."></textarea>
-        </div>
-        
-        <!-- Additional Service Options -->
-        <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
-            <h4 class="font-semibold text-gray-800 mb-3 flex items-center">
-                <i class="fas fa-star text-yellow-500 mr-2"></i>Pilihan Tambahan
-            </h4>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <label class="flex items-center space-x-3 cursor-pointer">
-                    <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500">
-                    <span class="text-gray-700">Service Emergency (24 Jam)</span>
-                </label>
-                <label class="flex items-center space-x-3 cursor-pointer">
-                    <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500">
-                    <span class="text-gray-700">Free Konsultasi Teknis</span>
-                </label>
-            </div>
-        </div>
-        
-        <button type="submit" 
-                class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center group">
-            <i class="fab fa-whatsapp text-xl mr-3 group-hover:scale-110 transition-transform duration-300"></i>
-            <span class="text-lg">Booking via WhatsApp Sekarang</span>
-            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
-        </button>
-        
-        <div class="text-center">
-            <p class="text-gray-500 text-sm flex items-center justify-center">
-                <i class="fas fa-shield-alt mr-2 text-green-500"></i>
-                Data Anda aman dan tidak akan disalahgunakan
-            </p>
-        </div>
-    </form>
-</div>
+                    
                     <!-- Contact Info -->
-                    <div class="md:w-1/3 bg-blue-800 p-8 text-white">
+                    <div class="md:w-1/3 bg-gradient-to-b from-blue-800 to-blue-900 p-8 md:p-10 text-white">
                         <div class="h-full flex flex-col">
                             <div>
-                                <h3 class="text-2xl font-bold mb-6">Kenapa Memilih Kami?</h3>
-                                <ul class="space-y-4">
+                                <h3 class="text-2xl md:text-3xl font-bold mb-8">Kenapa Memilih Kami?</h3>
+                                <ul class="space-y-6">
                                     <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-green-300 mt-1 mr-3"></i>
-                                        <span>Teknisi Berpengalaman & Bersertifikat</span>
+                                        <i class="fas fa-check-circle text-green-300 text-xl mt-1 mr-4"></i>
+                                        <span class="text-blue-100 text-lg">Teknisi Berpengalaman & Bersertifikat</span>
                                     </li>
                                     <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-green-300 mt-1 mr-3"></i>
-                                        <span>Harga Terjangkau & Transparan</span>
+                                        <i class="fas fa-check-circle text-green-300 text-xl mt-1 mr-4"></i>
+                                        <span class="text-blue-100 text-lg">Harga Terjangkau & Transparan</span>
                                     </li>
                                     <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-green-300 mt-1 mr-3"></i>
-                                        <span>Garansi Layanan 30 Hari</span>
+                                        <i class="fas fa-check-circle text-green-300 text-xl mt-1 mr-4"></i>
+                                        <span class="text-blue-100 text-lg">Garansi Layanan 30 Hari</span>
                                     </li>
                                     <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-green-300 mt-1 mr-3"></i>
-                                        <span>Pelayanan Cepat & Ramah</span>
+                                        <i class="fas fa-check-circle text-green-300 text-xl mt-1 mr-4"></i>
+                                        <span class="text-blue-100 text-lg">Pelayanan Cepat & Ramah</span>
                                     </li>
                                 </ul>
                             </div>
                             
-                            <div class="mt-8 pt-6 border-t border-blue-700">
-                                <h4 class="font-bold mb-3">Butuh Bantuan Cepat?</h4>
-                                <a href="https://wa.me/6285960035570" target="_blank" class="inline-flex items-center text-blue-100 hover:text-white">
-                                    <i class="fab fa-whatsapp text-xl mr-2"></i> Chat WhatsApp Kami
+                            <div class="mt-auto pt-8 border-t border-blue-700">
+                                <h4 class="font-bold mb-4 text-xl">Butuh Bantuan Cepat?</h4>
+                                <a href="https://wa.me/6285960035570" target="_blank" class="inline-flex items-center text-blue-100 hover:text-white text-lg transition-all duration-300 mb-2">
+                                    <i class="fab fa-whatsapp text-2xl mr-3"></i> Chat WhatsApp Kami
                                 </a>
-                                <p class="text-sm text-blue-100 mt-2">Respon cepat via WhatsApp dalam 5 menit</p>
+                                <p class="text-blue-200 mt-3">Respon cepat via WhatsApp dalam 5 menit</p>
+                                
+                                <div class="mt-6">
+                                    <a href="tel:+6285960035570" class="inline-flex items-center text-blue-100 hover:text-white text-lg transition-all duration-300">
+                                        <i class="fas fa-phone text-xl mr-3"></i> +62 859-6003-5570
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -407,21 +610,33 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="flex items-center">
-                        <i class="fas fa-snowflake text-2xl mr-2"></i>
-                        <span class="font-semibold text-xl">AC Jaya Service</span>
+    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex flex-col lg:flex-row justify-between items-center">
+                <div class="mb-8 lg:mb-0 text-center lg:text-left">
+                    <div class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-snowflake text-3xl text-blue-400 mr-3"></i>
+                        <span class="font-bold text-2xl">AC Jaya Service</span>
                     </div>
-                    <p class="text-gray-400 mt-2">Layanan Service AC Profesional</p>
+                    <p class="text-gray-400 max-w-md">Layanan Service AC Profesional dengan pengalaman lebih dari 10 tahun melayani pelanggan di seluruh wilayah.</p>
+                    <div class="flex space-x-4 mt-6 justify-center lg:justify-start">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-twitter text-2xl"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="text-center md:text-right">
-                    <p class="text-gray-400">© 2025 AC Jaya Service. All rights reserved.</p>
-                    <div class="mt-2">
-                        <a href="#" class="text-gray-400 hover:text-white mx-2">Kebijakan Privasi</a>
-                        <a href="#" class="text-gray-400 hover:text-white mx-2">Syarat & Ketentuan</a>
+                <div class="text-center lg:text-right">
+                    <p class="text-gray-400 mb-2">© 2025 AC Jaya Service. All rights reserved.</p>
+                    <div class="flex space-x-6 justify-center lg:justify-end mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Kebijakan Privasi</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Syarat & Ketentuan</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">FAQ</a>
                     </div>
                 </div>
             </div>
@@ -429,12 +644,12 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 hidden">
-        <i class="fas fa-arrow-up"></i>
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 hidden z-50">
+        <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6285960035570" target="_blank" class="fixed bottom-6 left-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-50">
+    <a href="https://wa.me/6285960035570" target="_blank" class="fixed bottom-6 left-6 bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-110 z-50">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
