@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Service AC Jaya - Layanan Service AC Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- Update the navigation in index.html -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fas fa-snowflake text-blue-600 text-2xl mr-2"></i>
+                <span class="font-bold text-xl text-gray-800">AC Jaya Service</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Beranda</a>
+                <a href="#services" class="text-gray-700 hover:text-blue-600 transition">Layanan</a>
+                <a href="#about" class="text-gray-700 hover:text-blue-600 transition">Tentang Kami</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition">Testimoni</a>
+                <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Kontak</a>
+                <a href="https://wa.me/6285960035570?text=Halo%20AC%20Jaya%2C%20saya%20ingin%20booking%20layanan%20service%20AC.%20Berikut%20detail%20kebutuhan%20saya%3A%0A%0A- Jenis%20Layanan%3A%20%0A- Alamat%3A%20%0A- Hari%20%26%20Waktu%20yang%20Diharapkan%3A%20%0A%0ATerima%20kasih."
+                   target="_blank"
+                   class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 flex items-center">
+                    <i class="fab fa-whatsapp mr-2"></i> Booking Sekarang
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+            <a href="#home" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Beranda</a>
+            <a href="#services" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Layanan</a>
+            <a href="#about" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Tentang Kami</a>
+            <a href="#testimonials" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Testimoni</a>
+            <a href="#contact" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Kontak</a>
+            <a href="https://wa.me/6285960035570?text=Halo%20AC%20Jaya%2C%20saya%20ingin%20booking%20layanan%20service%20AC.%20Berikut%20detail%20kebutuhan%20saya%3A%0A%0A- Jenis%20Layanan%3A%20%0A- Alamat%3A%20%0A- Hari%20%26%20Waktu%20yang%20Diharapkan%3A%20%0A%0ATerima%20kasih."
+               target="_blank"
+               class="block mt-4 bg-green-500 hover:bg-green-600 text-white text-center py-2 px-4 rounded-full font-medium transition-all duration-300">
+                <i class="fab fa-whatsapp mr-2"></i> Booking via WhatsApp
+            </a>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Layanan Service AC Profesional</h1>
+            <p class="text-xl md:text-2xl mb-8">Dinginkan ruangan Anda dengan layanan terbaik dari tim ahli kami</p>
+            <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-50 transition duration-300">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Service AC Rumah</h3>
+                    <p class="text-gray-600">Layanan perbaikan dan perawatan AC rumah dengan teknisi berpengalaman.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Service AC Kantor</h3>
+                    <p class="text-gray-600">Layanan komprehensif untuk AC kantor dan gedung perkantoran.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-blue-500 text-4xl mb-4">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Cuci AC</h3>
+                    <p class="text-gray-600">Jasa cuci AC berkualitas untuk kinerja yang optimal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1600566752225-9a3bccf86dda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tentang Kami" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold mb-6">Tentang Kami</h2>
+                    <p class="text-gray-700 mb-4">AC Jaya Service adalah penyedia jasa service AC profesional yang telah berpengalaman melayani pelanggan selama lebih dari 10 tahun.</p>
+                    <p class="text-gray-700 mb-6">Kami memiliki tim teknisi yang handal dan terlatih, siap memberikan pelayanan terbaik untuk kebutuhan pendingin ruangan Anda.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Teknisi Berpengalaman</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Garansi Layanan</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                            <span>Harga Terjangkau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Apa Kata Pelanggan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Pelayanan sangat memuaskan, AC saya dingin kembali seperti baru. Teknisi ramah dan profesional."</p>
+                    <div class="flex items-center">
+                        <div class="bg-blue-500 text-white rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                            <span>AS</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Andi Santoso</h4>
+                            <p class="text-sm text-gray-600">Jakarta Selatan</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Harga bersaing dan pelayanan cepat. Teknisi datang tepat waktu dan pekerjaan rapi."</p>
+                    <div class="flex items-center">
+                        <div class="bg-blue-500 text-white rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                            <span>SD</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Siti Dewi</h4>
+                            <p class="text-sm text-gray-600">Tangerang</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Sudah beberapa kali menggunakan jasa AC Jaya, selalu puas dengan hasilnya. Recommended!"</p>
+                    <div class="flex items-center">
+                        <div class="bg-blue-500 text-white rounded-full h-10 w-10 flex items-center justify-center mr-3">
+                            <span>RB</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rudi Budiman</h4>
+                            <p class="text-sm text-gray-600">Depok</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Hubungi Kami</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-semibold mb-6">Kirim Pesan</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="name">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="email">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="phone">Nomor Telepon</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="message">Pesan</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">Kirim Pesan</button>
+                        </form>
+                    </div>
+                    <div class="md:w-1/2 bg-blue-600 text-white p-8">
+                        <h3 class="text-2xl font-semibold mb-6">Info Kontak</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Alamat</h4>
+                                    <p class="text-blue-100">Jl. Contoh No. 123, Jakarta Selatan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Telepon</h4>
+                                    <p class="text-blue-100">+62 812-3456-7890</p>
+                                    <p class="text-blue-100">(021) 1234567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <p class="text-blue-100">info@acjayaservice.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock mt-1 mr-4"></i>
+                                <div>
+                                    <h4 class="font-semibold">Jam Kerja</h4>
+                                    <p class="text-blue-100">Senin - Jumat: 08:00 - 17:00 WIB</p>
+                                    <p class="text-blue-100">Sabtu: 08:00 - 15:00 WIB</p>
+                                </div>
+                            </div>
+                            <div class="pt-4">
+                                <h4 class="font-semibold mb-3">Ikuti Kami</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                                    <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-instagram text-xl"></i></a>
+                                    <a href="#" class="text-white hover:text-blue-200"><i class="fab fa-whatsapp text-xl"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-snowflake text-2xl mr-2"></i>
+                        <span class="font-semibold text-xl">AC Jaya Service</span>
+                    </div>
+                    <p class="text-gray-400 mt-2">Layanan Service AC Profesional</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400">© 2025 AC Jaya Service. All rights reserved.</p>
+                    <div class="mt-2">
+                        <a href="#" class="text-gray-400 hover:text-white mx-2">Kebijakan Privasi</a>
+                        <a href="#" class="text-gray-400 hover:text-white mx-2">Syarat & Ketentuan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/6281234567890" target="_blank" class="fixed bottom-6 left-6 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition duration-300 z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
