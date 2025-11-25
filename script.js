@@ -59,7 +59,7 @@ if (bookingForm) {
         else greeting += 'Malam';
         
         // Create WhatsApp message with proper formatting
-        const message = `${greeting} Bapak/Ibu AC Jaya,%0A%0ASaya ingin memesan layanan service AC dengan detail sebagai berikut:%0A%0A• Nama: ${name}%0A• No. WhatsApp: ${phone}%0A• Jenis Layanan: ${service}%0A• Tanggal: ${date}%0A• Alamat: ${address}%0A• Catatan: ${notes || 'Tidak ada'}%0A%0ATerima kasih atas pelayanannya. Saya tunggu konfirmasinya.%0A%0ASalam,%0A${name}`;
+        const message = `${greeting} Bapak/Ibu Mitra utama Elektronik,%0A%0ASaya ingin memesan layanan service AC dengan detail sebagai berikut:%0A%0A• Nama: ${name}%0A• No. WhatsApp: ${phone}%0A• Jenis Layanan: ${service}%0A• Tanggal: ${date}%0A• Alamat: ${address}%0A• Catatan: ${notes || 'Tidak ada'}%0A%0ATerima kasih atas pelayanannya. Saya tunggu konfirmasinya.%0A%0ASalam,%0A${name}`;
         
         const whatsappUrl = `https://wa.me/6285960035570?text=${message}`;
         
